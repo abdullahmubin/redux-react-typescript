@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import './base.scss'
 import { useDispatch, useSelector } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actionCreators } from './state';
 import { RootState } from './state/reducers';
+
+import img from './logo.png';
 
 import List from './components/List';
 import AddToList from './components/AddToList'
@@ -42,6 +45,7 @@ function App() {
       <List people={people}/>
 
       <AddToList people={people} setPeople={setPeople}/>
+      <img src={img} />
     </div>
   );
 }
