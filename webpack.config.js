@@ -12,6 +12,13 @@ module.exports = {
     entry: {
       app: './src/index.tsx',
     },
+    output: {
+      // path: './build/ClientBin',
+      filename: 'js/[name].[contenthash].js',
+      path: path.resolve(__dirname, 'dist'),
+      chunkFilename: './js/chunkFilename.[name].[contenthash].js',
+    clean: true,
+  },
     resolve: {
       extensions: [".js", ".json", ".ts", ".tsx"],
     },
@@ -83,8 +90,9 @@ module.exports = {
       new CleanWebpackPlugin(),
       new OptimizeCssAssetsPlugin(),
       new MiniCssExtractPlugin({
-        filename: '[name].[contenthash].css',
-        chunkFilename: '[id].[hash:8].css',
+        filename: 'css/[name].[contenthash].css',
+        chunkFilename: 'css/[id].[contenthash].css',
+        ignoreOrder: false,
       }),
       new BundleAnalyzerPlugin({
         analyzerMode: enableBundleAnalyzer === true ? 'static' : 'disabled',
